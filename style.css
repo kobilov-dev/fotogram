@@ -1,0 +1,188 @@
+/* Palanquer Regular */
+@font-face {
+    font-family: "Palanquer";
+    src: url("./fonts/Palanquer-Regular.woff2") format("woff2"),
+        url("./fonts/Palanquer-Regular.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Palanquer Bold */
+@font-face {
+    font-family: "Palanquer";
+    src: url("./fonts/Palanquer-Bold.woff2") format("woff2"),
+        url("./fonts/Palanquer-Bold.woff") format("woff");
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: "Palanquer", sans-serif;
+}
+
+* {
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+.wrapper_container {
+    max-width: 1440px;
+    /* padding: 0 160px;*/
+    width: 100%;
+    margin: auto;
+    background-color: #06171E;
+
+}
+
+/* HEADER */
+
+.header_layout {
+    display: flex;
+    height: 81px;
+    background-color: #646464;
+    align-items: center;
+}
+
+.header_logo {
+    width: 215px;
+    height: 41px;
+    margin-top: 18px;
+    font-size: 30px;
+    padding-left: 96px;
+}
+
+/* MAIN CONTENT */
+
+
+
+/* PAGE-CONTENT SECTION */
+.page_title {
+    width: 900px;
+    height: 67px;
+    margin: 0 auto 80px;
+    margin-top: 179px;
+    background-color: beige;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Palanquer", sans-serif;
+    font-size: 56px;
+    font-weight: 800;
+    text-align: center;
+    
+}
+
+.photo_container {
+    width: 100%;
+    max-width: 1440px;
+    min-height: 1195px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #06171E;
+}
+
+.page_content {
+    width: 100%;
+    max-width: 1170px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+    background-color: #646464;
+}
+
+.photo-row {
+    display: flex;
+    gap: 4px;
+}
+
+.photo-platzhalter {
+    width: 150px;
+    height: 150px;
+    background-color: green;
+    border-radius: 16px;
+    border: 2px solid rgba(0, 0, 255, 0.85);
+}
+
+
+/* FOOTER */
+
+.footer_layout {
+    height: 128px;
+    width: 100%;
+    background-image: url("./img/Subtract.png");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer_logo {
+    width: 210px;
+    height: 64px;
+}
+
+.image-dialog {
+    border: none;
+    padding: 0;
+    background: transparent;
+}
+
+.image-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.dialog-container {
+    width: 688px;
+    height: 674px;
+    background-color: rgba(9, 33, 42, 1);
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.dialog-header {
+    height: 64px;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.dialog-footer {
+    padding: 0 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.dialog-body {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dialog-body img {
+    width: 570px;
+    height: 375px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
