@@ -1,30 +1,26 @@
 /* Palanquer Regular */
 @font-face {
-    font-family: "Palanquer";
-    src: url("./fonts/Palanquer-Regular.woff2") format("woff2"),
-        url("./fonts/Palanquer-Regular.woff") format("woff");
+    font-family: "Palanquin";
+    src: url("assets/fonts/Palanquin‑Regular.woff2") format("woff2");
     font-weight: 400;
-    font-style: normal;
-    font-display: swap;
 }
 
-/* Palanquer Bold */
 @font-face {
-    font-family: "Palanquer";
-    src: url("./fonts/Palanquer-Bold.woff2") format("woff2"),
-        url("./fonts/Palanquer-Bold.woff") format("woff");
-    font-weight: 800;
-    font-style: normal;
-    font-display: swap;
+    font-family: "Palanquin";
+    src: url("assets/fonts/Palanquin‑Bold.woff2") format("woff2");
+    font-weight: 700;
 }
+
+
 
 
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    font-family: "Palanquer", sans-serif;
+    font-family: "Palanquein", sans-serif;
 }
+
 
 * {
     padding: 0;
@@ -42,9 +38,9 @@ body {
     max-width: 1440px;
     /* padding: 0 160px;*/
     width: 100%;
+    max-height: 1024px;
     margin: auto;
     background-color: #06171E;
-
 }
 
 /* HEADER */
@@ -52,16 +48,15 @@ body {
 .header_layout {
     display: flex;
     height: 81px;
-    background-color: #646464;
+    background-color: rgba(9, 33, 42, 1);
     align-items: center;
 }
 
 .header_logo {
-    width: 215px;
-    height: 41px;
-    margin-top: 18px;
-    font-size: 30px;
-    padding-left: 96px;
+    padding-top: 20px;
+    padding-right: 140px;
+    padding-bottom: 20px;
+    padding-left: 140px;
 }
 
 /* MAIN CONTENT */
@@ -72,9 +67,9 @@ body {
 .page_title {
     width: 900px;
     height: 67px;
+    color: rgba(255, 255, 255, 1);
     margin: 0 auto 80px;
     margin-top: 179px;
-    background-color: beige;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -82,18 +77,15 @@ body {
     font-size: 56px;
     font-weight: 800;
     text-align: center;
-    
+
 }
 
 .photo_container {
-    width: 100%;
-    max-width: 1440px;
     min-height: 1195px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #06171E;
 }
 
 .page_content {
@@ -103,20 +95,19 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 80px;
-    background-color: #646464;
+    background-color: rgba(6, 23, 30, 1);
 }
 
 .photo-row {
     display: flex;
-    gap: 4px;
+    gap: 12px;
 }
 
 .photo-platzhalter {
     width: 150px;
     height: 150px;
-    background-color: green;
+    object-fit: cover;
     border-radius: 16px;
-    border: 2px solid rgba(0, 0, 255, 0.85);
 }
 
 
@@ -125,7 +116,7 @@ body {
 .footer_layout {
     height: 128px;
     width: 100%;
-    background-image: url("./img/Subtract.png");
+    background-image: url("./assets/icons/Subtract.png");
     display: flex;
     justify-content: center;
     align-items: center;
@@ -153,6 +144,11 @@ body {
     border-radius: 40px;
     display: flex;
     flex-direction: column;
+    gap: 48px;
+    padding-top: 56px;
+    padding-right: 64px;
+    padding-bottom: 56px;
+    padding-left: 64px;
 }
 
 .dialog-header {

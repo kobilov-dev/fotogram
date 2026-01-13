@@ -1,20 +1,20 @@
 
 const row1Images = [
-  './img/field-9295186_1280.jpg',
-  './img/photo2.jpg',
-  './img/photo3.jpg',
-  './img/photo4.jpg',
-  './img/photo5.jpg',
-  './img/photo6.jpg',
-  './img/photo7.jpg'
+  './assets/img/chilli-9202873_1280.jpg',
+  './assets/img/deer-8052359_1280.jpg',
+  './assets/img/hedgehog-1759027_1280.jpg',
+  './assets/img/green-turtle-7133765_1280.jpg',
+  './assets/img/field-9295186_1280.jpg',
+  './assets/img/dolomites-5076487_1280.jpg',
+  './assets/img/zebras-8403717_1280.jpg'
 ];
 
 const row2Images = [
-  './img/photo8.jpg',
-  './img/photo9.jpg',
-  './img/photo10.jpg',
-  './img/photo11.jpg',
-  './img/photo12.jpg'
+  './assets/img/horses-2427513_1280.jpg',
+  './assets/img/rhino-6065480_1920.jpg',
+  './assets/img/nature-5411408_1920.jpg',
+  './assets/img/horses-1401707_1920.jpg',
+  './assets/img/dogs-6463032_1280.jpg'
 ];
 
 const row1 = document.getElementById('row-1');
