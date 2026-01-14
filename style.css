@@ -18,7 +18,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    font-family: "Palanquein", sans-serif;
+    font-family: "Palanquin", sans-serif;
 }
 
 
@@ -35,10 +35,12 @@ body {
 }
 
 .wrapper_container {
+    display: flex;
+    flex-direction: column;
     max-width: 1440px;
+    max-height: 1100px;
     /* padding: 0 160px;*/
     width: 100%;
-    max-height: 1024px;
     margin: auto;
     background-color: #06171E;
 }
@@ -65,7 +67,8 @@ body {
 
 /* PAGE-CONTENT SECTION */
 .page_title {
-    width: 900px;
+    max-width: 900px;
+    width: 100%;
     height: 67px;
     color: rgba(255, 255, 255, 1);
     margin: 0 auto 80px;
@@ -81,14 +84,13 @@ body {
 }
 
 .photo_container {
-    min-height: 1195px;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .page_content {
+    flex: 1;
     width: 100%;
     max-width: 1170px;
     display: flex;
@@ -100,14 +102,18 @@ body {
 
 .photo-row {
     display: flex;
+    flex-wrap: wrap;
     gap: 12px;
+    justify-content: center;
 }
 
 .photo-platzhalter {
     width: 150px;
     height: 150px;
+    display: flex;
     object-fit: cover;
     border-radius: 16px;
+    border: 2px solid rgba(18, 70, 88, 1)
 }
 
 
@@ -116,7 +122,11 @@ body {
 .footer_layout {
     height: 128px;
     width: 100%;
+    margin-top: 80px;
     background-image: url("./assets/icons/Subtract.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -124,7 +134,7 @@ body {
 
 .footer_logo {
     width: 210px;
-    height: 64px;
+    height: auto;
 }
 
 .image-dialog {
@@ -133,13 +143,13 @@ body {
     background: transparent;
 }
 
-.image-dialog::backdrop {
-    background: rgba(0, 0, 0, 0.7);
+dialog#image-dialog {
+    background: rgba(9, 33, 42, 1);
+    border-radius: 40px;
 }
 
 .dialog-container {
-    width: 688px;
-    height: 674px;
+    max-width: 688px;
     background-color: rgba(9, 33, 42, 1);
     border-radius: 40px;
     display: flex;
@@ -151,9 +161,17 @@ body {
     padding-left: 64px;
 }
 
+button#prev-btn,
+button#next-btn {
+    background-color: rgba(253, 91, 79, 0);
+}
+
 .dialog-header {
     height: 64px;
     padding: 0 24px;
+    font-size: 24px;
+    font-family: 'Figtree', sans-serif;
+    font-weight: 700;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -163,9 +181,9 @@ body {
 .dialog-footer {
     padding: 0 24px;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
-    color: white;
+
 }
 
 .dialog-body {
@@ -178,7 +196,158 @@ body {
 .dialog-body img {
     width: 570px;
     height: 375px;
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
+
+}
+
+
+/* RESPONSIV */
+
+@media (max-width: 1180px) {
+
+    .header_logo {
+        padding-top: 8px;
+        padding-right: 2px;
+        padding-bottom: 6px;
+        padding-left: 8px;
+    }
+
+    .page_title {
+        max-width: 100%;
+        font-size: 44px;
+        margin-top: 140px;
+        margin-bottom: 64px;
+    }
+
+    .page_content {
+        gap: 64px;
+    }
+
+    .photo-row {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .dialog-container {
+        max-width: 600px;
+        padding: 40px;
+        gap: 40px;
+    }
+
+    .dialog-header {
+        font-size: 22px;
+    }
+
+}
+
+
+@media (max-width: 990px) {
+
+    .header_layout {
+        justify-content: center;
+    }
+
+    .dialog-container{
+        max-width: 500px;
+        
+    }
+
+    .dialog-body img{
+        width: 420px;
+        height: 380px;
+        object-fit: cover;
+    }
+
+    .page_title {
+        font-size: 40px;
+        margin-top: 120px;
+    }
+
+    .photo-row {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .dialog-container {
+        width: 100%;
+        max-width: 343px;
+        min-height: 660px;
+        border-radius: 40px;
+        gap: 48px;
+    }
+
+    .dialog-body img {
+        width: 300px;
+        height: 320px;
+        object-fit: cover;
+    }
+
+    .header_layout {
+        justify-content: center;
+    }
+
+    .header_logo {
+        padding-top: 20px;
+    }
+
+    .page_content {
+        gap: 12px;
+    }
+
+    .page_title {
+        font-size: 28px;
+        margin-top: 80px;
+    }
+
+    .dialog-container {
+        padding: 24px;
+        gap: 24px;
+    }
+
+    .dialog-header {
+        font-size: 18px;
+    }
+
+}
+
+
+@media (max-width: 375px) {
+
+    .header_layout {
+        justify-content: center;
+    }
+
+    .page_title {
+        font-size: 40px;
+    }
+
+    .photo-platzhalter {
+        width: 140px;
+        height: 140px;
+    }
+
+    .dialog-header {
+        font-size: 16px;
+        text-align: center;
+    }
+    .wrapper_container {
+        padding: 0;          /* Padding entfernen, sonst Logo verschiebt sich */
+    }
+
+    .footer_layout {
+        width: 100%;         /* nicht 375px setzen, sonst linksbündig */
+        height: 103px;       /* laut Figma */
+        justify-content: center; /* Logo zentrieren */
+    }
+
+    .footer_logo {
+        width: 150px; 
+        height: auto;
+    }
+
+
 }
