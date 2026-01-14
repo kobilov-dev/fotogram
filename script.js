@@ -1,15 +1,12 @@
 
-const row1Images = [
+const allImages = [
   './assets/img/chilli-9202873_1280.jpg',
   './assets/img/deer-8052359_1280.jpg',
   './assets/img/hedgehog-1759027_1280.jpg',
   './assets/img/green-turtle-7133765_1280.jpg',
   './assets/img/field-9295186_1280.jpg',
   './assets/img/dolomites-5076487_1280.jpg',
-  './assets/img/zebras-8403717_1280.jpg'
-];
-
-const row2Images = [
+  './assets/img/zebras-8403717_1280.jpg',
   './assets/img/horses-2427513_1280.jpg',
   './assets/img/rhino-6065480_1920.jpg',
   './assets/img/nature-5411408_1920.jpg',
@@ -17,83 +14,139 @@ const row2Images = [
   './assets/img/dogs-6463032_1280.jpg'
 ];
 
-const row1 = document.getElementById('row-1');
-const row2 = document.getElementById('row-2');
+const allNames = [
+  'Chilli',
+  'Deer',
+  'Hedgehog',
+  'Green Turtle',
+  'Field',
+  'Dolomites',
+  'Zebras',
+  'Horses',
+  'Rhino',
+  'Nature',
+  'Horses2',
+  'Dogs'
+];
 
-function renderImages(rowElement, imagesArray) {
-
-  for (let i = 0; i < imagesArray.length; i++) {
-    var img = document.createElement('img');
-    
-    img.src = imagesArray[i];
-    img.alt = "Photo " + (i + 1);
-    img.className = "photo-platzhalter";
-    rowElement.appendChild(img);
-  }
-}
-
-renderImages(row1, row1Images);
-renderImages(row2, row2Images);
-
+// Referenzen zu HTML-Elementen
+const row = document.getElementById('row'); 
 const dialog = document.getElementById('image-dialog');
 const dialogImage = document.getElementById('dialog-image');
+const dialogTitle = document.getElementById('dialog-title');
+const photoCount = document.getElementById('photo-count');
 const closeBtn = document.getElementById('close-btn');
 const prevBtn = document.getElementById('prev-btn');
 const nextBtn = document.getElementById('next-btn');
 
-const allImages = [...row1Images, ...row2Images];
-
+// Aktuell angezeigtes Bild
 let currentIndex = 0;
 
-function updateImage() {
+// FUNKTION: Bilder in HTML erstellen
+
+function renderImages() {
+  for (let i = 0; i < allImages.length; i++) {
+    const img = document.createElement('img');
+    img.src = allImages[i];
+    img.alt = allNames[i];
+    img.className = 'photo-platzhalter';
+    img.tabIndex = 0; // Tastatur-Zugänglichkeit
+    row.appendChild(img);
+  }
+}
+
+
+// FUNKTION: Overlay aktualisieren
+function updateDialog() {
   dialogImage.src = allImages[currentIndex];
+  dialogTitle.textContent = allNames[currentIndex];
+  photoCount.textContent = `${currentIndex + 1} / ${allImages.length}`;
 }
 
+
+// FUNKTION: Thumbnails anklickbar machen
 function setupThumbnails() {
-  let thumbnails = document.getElementsByClassName('photo-platzhalter');
+  const thumbnails = document.getElementsByClassName('photo-platzhalter');
 
- for (let i = 0; i < thumbnails.length; i++) {
-  (function(index) {
-    thumbnails[index].onclick = function() {
-      currentIndex = index;  
-      updateImage();
+  for (let i = 0; i < thumbnails.length; i++) {
+    // Maus-Klick
+    thumbnails[i].addEventListener('click', function() {
+      currentIndex = i;
+      updateDialog();
       dialog.showModal();
-    };
-  })(i);
+    });
+
+    // Tastatur: Enter oder Space öffnet Dialog
+    thumbnails[i].addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        currentIndex = i;
+        updateDialog();
+        dialog.showModal();
+      }
+    });
+  }
 }
 
-}
+
+// FUNKTION: Navigation im Overlay
+
+prevBtn.addEventListener('click', function() {
+  currentIndex = currentIndex > 0 ? currentIndex - 1 : allImages.length - 1;
+  updateDialog();
+});
+
+nextBtn.addEventListener('click', function() {
+  currentIndex = currentIndex < allImages.length - 1 ? currentIndex + 1 : 0;
+  updateDialog();
+});
 
 
-// Close-Button Funktion
 closeBtn.addEventListener('click', function() {
   dialog.close();
 });
 
-// Vorheriges Bild
-prevBtn.addEventListener('click', function() {
-  if (currentIndex > 0) {
-    currentIndex--;
-  } else {
-    currentIndex = allImages.length - 1;
+
+dialog.addEventListener('click', function(e) {
+  if (e.target === dialog) {
+    dialog.close();
   }
-  updateImage();
 });
 
-// Nächstes Bild
-nextBtn.addEventListener('click', function() {
-  if (currentIndex < allImages.length - 1) {
-    currentIndex++;
-  } else {
-    currentIndex = 0;
+
+// Tastatursteuerung für Overlay
+document.addEventListener('keydown', function(e) {
+
+
+  if (!dialog.open) return;
+
+  if (e.key === 'ArrowLeft') {
+    prevBtn.click();
   }
-  updateImage();
+
+  if (e.key === 'ArrowRight') {
+    nextBtn.click();
+  }
+
+  if (e.key === 'Escape') {
+    dialog.close();
+  }
+
+  if (e.key === 'Tab') {
+
+    let alleBilder = document.getElementsByClassName('photo-platzhalter');
+    let letztesBild = alleBilder[alleBilder.length - 1];
+
+    if (document.activeElement === letztesBild) {
+      e.preventDefault(); 
+      dialog.close();      
+    }
+  }
+
 });
 
-// Setup-Thumbnails aufrufen
+
+
+// INITIALISIERUNG
+renderImages();
 setupThumbnails();
-
-function updateImage() {
-  dialogImage.src = allImages[currentIndex];
-  document.getElementById('photo-count').textContent = `${currentIndex + 1} / ${allImages.length}`;
-}
