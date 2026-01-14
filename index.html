@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fotogram</title>
+    <link rel="icon" href="./assets/icons/Property 1=Variant4.png" type="image/png">
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -23,18 +24,14 @@
           <h1 class="page_title">Your personal Photo Album</h1>
 
           <section class="page_content">
-            <div class="photo-row" id="row-1"></div>
-            <div class="photo-row" id="row-2"></div>
+            <div class="photo-row" id="row"></div>
+           
           </section>
 
-          <dialog id="image-dialog" class="image-dialog">
+          <dialog id="image-dialog">
             <div class="dialog-container">
               <div class="dialog-header">
-                <img
-                  src="./assets/icons/Alaska-810433_1280.png"
-                  class="img_photo_header"
-                  alt="Fotos-namen"
-                />
+               <span id="dialog-title" class="dialog-title"></span>
                 <button id="close-btn" type="button">
                   <img src="./assets/icons/Close icon.png" alt="close_icon" />
                 </button>
@@ -46,7 +43,7 @@
                 <button id="prev-btn" type="button">
                   <img src="./assets/icons/rückwärts.png" alt="Previous" />
                 </button>
-                  <span id="photo-count" style="color:white; margin:0 8px;">1/12</span>
+                  <span id="photo-count" style="color:white; margin:0 12px;">1/12</span>
 
                 <button id="next-btn" type="button">
                   <img src="./assets/icons/vorwärts.png" alt="Next" />
