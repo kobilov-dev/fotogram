@@ -1,7 +1,6 @@
 
 
 # Fotogram
----
 
 
 <img width="1348" height="500" alt="fotogram" src="https://github.com/user-attachments/assets/9e631bba-1615-464c-97ac-9878cd03a92e" />
