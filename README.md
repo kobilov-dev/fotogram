@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="https://media.giphy.com/media/LmNwrBhejkK9EFP504/giphy.gif" alt="Fotogram Demo GIF" height="300"/>
+</div>
+
 # Fotogram
 
 ## 🧩 Description
