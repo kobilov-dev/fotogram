@@ -18,7 +18,7 @@
       </div>
     </header>
     <main>
-      <div id="section_photo"></div>
+      <div id="section_photo">
       <div class="wrapper_container">
         <div class="photo_container">
           <h1 class="page_title">Your personal Photo Album</h1>
@@ -28,31 +28,29 @@
            
           </section>
 
-          <dialog id="image-dialog">
+          <dialog id="image-dialog" aria-labelledby="dialog-title" aria-modal="true">
             <div class="dialog-container">
               <div class="dialog-header">
-               <span id="dialog-title" class="dialog-title"></span>
-                <button id="close-btn" type="button">
-                  <img src="./assets/icons/Close icon.png" alt="close_icon" />
+                <span id="dialog-title" class="dialog-title"></span>
+                <button id="close-btn" type="button" aria-label="Dialog schließen">
+                  <img src="./assets/icons/Close icon.png" alt="" />
                 </button>
               </div>
               <div class="dialog-body">
                 <img id="dialog-image" alt="Photo large view" />
               </div>
               <div class="dialog-footer">
-                <button id="prev-btn" type="button">
+                <button id="prev-btn" type="button" aria-label="Vorheriges Bild">
                   <img src="./assets/icons/rückwärts.png" alt="Previous" />
                 </button>
                   <span id="photo-count" style="color:white; margin:0 12px;">1/12</span>
 
-                <button id="next-btn" type="button">
+                <button id="next-btn" type="button" aria-label="Nächstes Bild">
                   <img src="./assets/icons/vorwärts.png" alt="Next" />
                 </button>
               </div>
             </div>
           </dialog>
-
-
         </div>
       </div>
     </main>

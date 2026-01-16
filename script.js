@@ -29,8 +29,7 @@ const allNames = [
   'Dogs'
 ];
 
-// Referenzen zu HTML-Elementen
-const row = document.getElementById('row'); 
+// HTML-Elementen holen
 const dialog = document.getElementById('image-dialog');
 const dialogImage = document.getElementById('dialog-image');
 const dialogTitle = document.getElementById('dialog-title');
@@ -42,42 +41,43 @@ const nextBtn = document.getElementById('next-btn');
 // Aktuell angezeigtes Bild
 let currentIndex = 0;
 
-// FUNKTION: Bilder in HTML erstellen
+// Bilder in HTML erstellen
+let row = document.getElementById('row');
 
-function renderImages() {
-  for (let i = 0; i < allImages.length; i++) {
-    const img = document.createElement('img');
-    img.src = allImages[i];
-    img.alt = allNames[i];
-    img.className = 'photo-platzhalter';
-    img.tabIndex = 0; // Tastatur-Zugänglichkeit
-    row.appendChild(img);
-  }
+for (let i = 0; i < allImages.length; i++) {
+  
+  row.innerHTML = row.innerHTML +
+    '<img src="' + allImages[i] +
+    '" alt="' + allNames[i] +
+    '" class="photo-platzhalter" tabindex="0">';
 }
 
 
-// FUNKTION: Overlay aktualisieren
+
+// Overlay 
 function updateDialog() {
+  
   dialogImage.src = allImages[currentIndex];
   dialogTitle.textContent = allNames[currentIndex];
-  photoCount.textContent = `${currentIndex + 1} / ${allImages.length}`;
+  photoCount.textContent = (currentIndex + 1) + " / " + allImages.length;
 }
 
 
-// FUNKTION: Thumbnails anklickbar machen
+// Thumbnails anklickbar machen, Mausklick
 function setupThumbnails() {
   const thumbnails = document.getElementsByClassName('photo-platzhalter');
 
   for (let i = 0; i < thumbnails.length; i++) {
-    // Maus-Klick
-    thumbnails[i].addEventListener('click', function() {
+    
+    thumbnails[i].onclick = function() {
       currentIndex = i;
       updateDialog();
       dialog.showModal();
-    });
+    };
 
-    // Tastatur: Enter oder Space öffnet Dialog
+    // Enter oder Space öffnet Dialog
     thumbnails[i].addEventListener('keydown', function(e) {
+      
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         currentIndex = i;
@@ -92,12 +92,22 @@ function setupThumbnails() {
 // FUNKTION: Navigation im Overlay
 
 prevBtn.addEventListener('click', function() {
-  currentIndex = currentIndex > 0 ? currentIndex - 1 : allImages.length - 1;
+
+  if (currentIndex > 0) {
+  currentIndex = currentIndex - 1;
+} else {
+  currentIndex = allImages.length - 1;
+}
   updateDialog();
 });
 
 nextBtn.addEventListener('click', function() {
-  currentIndex = currentIndex < allImages.length - 1 ? currentIndex + 1 : 0;
+ 
+  if (currentIndex < allImages.length - 1) {
+  currentIndex = currentIndex + 1;
+} else {
+  currentIndex = 0;
+}
   updateDialog();
 });
 
@@ -116,7 +126,6 @@ dialog.addEventListener('click', function(e) {
 
 // Tastatursteuerung für Overlay
 document.addEventListener('keydown', function(e) {
-
 
   if (!dialog.open) return;
 
@@ -145,8 +154,5 @@ document.addEventListener('keydown', function(e) {
 
 });
 
-
-
 // INITIALISIERUNG
-renderImages();
 setupThumbnails();
