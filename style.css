@@ -1,100 +1,81 @@
-/* Palanquer Regular */
-.palanquin-bold {
-    font-weight: 700;
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-.palanquin-normal {
-    font-weight: 400;
-}
-
-.figtree-normal {
-    font-weight: 400;
-}
-
-.figtree-bold {
-    font-weight: 700;
+html,
+body {
+    height: 100%;
 }
 
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    font-family: "Palanquin", sans-serif;
-    font-family: "Figtree", sans-serif;
+    font-family: "Figtree", "Palanquin", sans-serif;
+    background-color: #06171E; 
 }
 
-* {
-    padding: 0;
-    box-sizing: border-box;
+/* HEADER */
+header {
+    display: flex;
+    justify-content: center;
+    background-color: rgba(9, 33, 42, 1);
+    height: 81px;
+    width: 100%;
+
 }
 
+.header_layout {
+    display: flex;
+    width: 100%;
+    max-width: 1440px;
+    height: 81px;
+    padding: 0 20px;
+}
 
-html,
-body {
-    height: 100%;
-    margin: 0;
+.header_logo {
+    padding-top: 20px;
+    display: flex;
+    align-items: flex-start;
+}
+
+/* MAIN CONTENT */
+main {
+    display: flex;
+    justify-content: center;
+    flex: 1 0 auto; 
+    background-color: #06171E;
+    min-height: 860px;
 }
 
 .wrapper_container {
     display: flex;
     flex-direction: column;
-    /* padding: 0 160px;*/
     width: 100%;
-    background-color: #06171E;
+    max-width: 1440px;
+    padding: 0 20px;
 }
 
-/* HEADER */
-
-.header_layout {
-    display: flex;
-    height: 81px;
-    width: 100%;
-    background-color: rgba(9, 33, 42, 1);
-
-}
-
-.header_logo {
-    padding-top: 20px;
-    padding-right: 140px;
-    padding-bottom: 20px;
-    padding-left: 140px;
-}
-
-/* MAIN CONTENT */
-
-
-
-/* PAGE-CONTENT SECTION */
 .page_title {
-    max-width: 900px;
     width: 100%;
-    height: 67px;
-    color: rgba(255, 255, 255, 1);
-    margin: 0 auto 80px;
-    margin-top: 179px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: "Palanquer", sans-serif;
+    max-width: 900px;
+    margin: 179px auto 80px;
+    color: white;
+    font-family: "Palanquin", sans-serif;
     font-size: 56px;
     font-weight: 800;
     text-align: center;
-
 }
 
+/* FOTO GRID */
 .photo_container {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.page_content {
-    flex: 1;
-    max-width: 1195px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: rgba(6, 23, 30, 1);
+    width: 100%;
 }
 
 .photo-row {
@@ -102,52 +83,54 @@ body {
     flex-wrap: wrap;
     gap: 24px;
     justify-content: center;
+    width: 100%;
+    margin-bottom: 50px;
 }
 
 .photo-platzhalter {
-    background-position: center bottom;
     width: 150px;
     height: 150px;
-    display: flex;
     object-fit: cover;
     border-radius: 16px;
-    border: 2px solid rgba(18, 70, 88, 1)
+    border: 2px solid rgba(18, 70, 88, 1);
+    transition: transform 0.2s ease, filter 0.2s ease;
 }
 
 .photo-platzhalter:hover {
     transform: scale(1.05);
-    border-color: rgba(18, 70, 88, 1);
     cursor: pointer;
     filter: brightness(1.2);
 }
 
-dialog::backdrop {
-    background: rgba(0, 0, 0, 0.6);
-}
-
-span#photo-count {
-    color: white;
-    font-size: 24px;
-}
-
 /* FOOTER */
+.footer_outer {
+    width: 100%;
+    background-color: #06171E; 
+    margin-top: 80px;
+}
 
 .footer_layout {
-    height: 128px;
     width: 100%;
-    margin-top: 80px;
+    /* max-width: 1440px; */
+    height: 128px;
+    margin: 0 auto; 
     background-image: url("./assets/icons/Subtract.png");
-    background-size: cover;
+    background-size: 100% 100%; 
+    background-repeat: no-repeat;
     background-position: center bottom;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    top: -1px; 
 }
 
 .footer_logo {
     width: 210px;
     height: auto;
+    margin-top: 15px; 
 }
+
 
 .image-dialog {
     border: none;
@@ -155,10 +138,21 @@ span#photo-count {
     background: transparent;
 }
 
+span#photo-count {
+    color: white;
+    font-size: 24px;
+}
+
 dialog#image-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background: rgba(9, 33, 42, 1);
     border-radius: 40px;
+    border: none;
 }
+
 
 .dialog-container {
     max-width: 688px;
