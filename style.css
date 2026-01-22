@@ -1,38 +1,26 @@
 /* Palanquer Regular */
-@font-face {
-    font-family: "Palanquin";
-    src: url("assets/fonts/Palanquin‑Regular.woff2") format("woff2");
-    font-weight: 400;
-}
-
-@font-face {
-    font-family: "Palanquin";
-    src: url("assets/fonts/Palanquin‑Bold.woff2") format("woff2");
+.palanquin-bold {
     font-weight: 700;
 }
 
-@font-face {
-    font-family: 'Figtree';
-    src: url('fonts/Figtree-Regular.woff2') format('woff2'),
-        url('fonts/Figtree-Regular.woff') format('woff');
+.palanquin-normal {
     font-weight: 400;
-    font-style: normal;
 }
 
-@font-face {
-    font-family: 'Figtree';
-    src: url('fonts/Figtree-Bold.woff2') format('woff2'),
-        url('fonts/Figtree-Bold.woff') format('woff');
+.figtree-normal {
+    font-weight: 400;
+}
+
+.figtree-bold {
     font-weight: 700;
-    font-style: normal;
 }
-
 
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     font-family: "Palanquin", sans-serif;
+    font-family: "Figtree", sans-serif;
 }
 
 * {
@@ -50,10 +38,8 @@ body {
 .wrapper_container {
     display: flex;
     flex-direction: column;
-    max-width: 1440px;
     /* padding: 0 160px;*/
     width: 100%;
-    margin: auto;
     background-color: #06171E;
 }
 
@@ -62,8 +48,9 @@ body {
 .header_layout {
     display: flex;
     height: 81px;
+    width: 100%;
     background-color: rgba(9, 33, 42, 1);
-    align-items: center;
+
 }
 
 .header_logo {
@@ -118,6 +105,7 @@ body {
 }
 
 .photo-platzhalter {
+    background-position: center bottom;
     width: 150px;
     height: 150px;
     display: flex;
@@ -127,12 +115,20 @@ body {
 }
 
 .photo-platzhalter:hover {
-    transform: scale(1.05);       
-    border-color: rgba(18, 70, 88, 1); 
-    cursor: pointer;          
+    transform: scale(1.05);
+    border-color: rgba(18, 70, 88, 1);
+    cursor: pointer;
+    filter: brightness(1.2);
 }
 
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.6);
+}
 
+span#photo-count {
+    color: white;
+    font-size: 24px;
+}
 
 /* FOOTER */
 
@@ -142,6 +138,7 @@ body {
     margin-top: 80px;
     background-image: url("./assets/icons/Subtract.png");
     background-size: cover;
+    background-position: center bottom;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -178,12 +175,22 @@ dialog#image-dialog {
 
 button#prev-btn,
 button#next-btn {
+    width: 60px;
+    height: 60px;
     background-color: rgba(253, 91, 79, 0);
+    border: none;
+}
+
+button#prev-btn :hover,
+button#next-btn :hover {
+    background-color: rgba(253, 91, 79, 0.2);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    padding: 1px;
+    border-radius: 50%;
 }
 
 .dialog-header {
-    height: 64px;
-    padding: 0 24px;
     font-size: 24px;
     font-family: 'Figtree', sans-serif;
     font-weight: 700;
@@ -194,7 +201,6 @@ button#next-btn {
 }
 
 .dialog-footer {
-    padding: 0 24px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -214,43 +220,24 @@ button#next-btn {
 
 }
 
-
-/* RESPONSIV */
-
-@media (max-width: 1180px) {
-
-    .header_logo {
-        padding-top: 8px;
-        padding-right: 2px;
-        padding-bottom: 6px;
-        padding-left: 8px;
-    }
-
-    .page_title {
-        max-width: 100%;
-        font-size: 44px;
-        margin-top: 140px;
-        margin-bottom: 64px;
-    }
-
-    .page_content {
-        gap: 64px;
-    }
-
-    .photo-row {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-    }
-
-    .dialog-container {
-        max-width: 600px;
-        padding: 40px;
-        gap: 40px;
-    }
+#close-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    padding: 8px;
+    border-radius: 50%;
 
 }
 
+#close-btn:hover {
+    background-color: rgba(253, 91, 79, 0.2);
+
+}
+
+
+
+/* RESPONSIV */
 
 @media (max-width: 990px) {
 
@@ -283,14 +270,6 @@ button#next-btn {
 
 @media (max-width: 480px) {
 
-    .dialog-container {
-        width: 100%;
-        max-width: 343px;
-        min-height: 660px;
-        border-radius: 40px;
-        gap: 48px;
-    }
-
     .dialog-body img {
         width: 300px;
         height: 320px;
@@ -303,6 +282,8 @@ button#next-btn {
 
     .header_logo {
         padding-top: 20px;
+        padding-right: 10px;
+        padding-left: 10px;
     }
 
     .page_content {
@@ -323,6 +304,10 @@ button#next-btn {
 
 @media (max-width: 375px) {
 
+    span#photo-count {
+        font-size: 16px;
+    }
+
     .header_layout {
         justify-content: center;
     }
@@ -330,12 +315,6 @@ button#next-btn {
     .page_title {
         font-size: 40px;
     }
-
-    .photo-platzhalter {
-        width: 140px;
-        height: 140px;
-    }
-
 
     .wrapper_container {
         padding: 0;
@@ -350,6 +329,12 @@ button#next-btn {
     .footer_logo {
         width: 150px;
         height: auto;
+    }
+
+    .dialog-body img {
+        width: 250px;
+        height: 320px;
+        object-fit: cover;
     }
 
 
