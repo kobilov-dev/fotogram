@@ -29,32 +29,58 @@ let names = [
 ];
 
 let currentIndex = 0;
+var dialog = document.getElementById("image-dialog");
 
 function onLoadPage() {
   createThumbnails();
 }
 
+let lastFocusedElement; // Speichert das Bild, das den Dialog geöffnet hat
+
 function createThumbnails() {
-  let row = document.getElementById("row");
+  var row = document.getElementById("row");
   row.innerHTML = "";
 
-  for (let i = 0; i < images.length; i++) {
-    row.innerHTML +=
-      '<img src="' + images[i] +
-      '" alt="' + names[i] +
-      '" class="photo-platzhalter"' +
-      ' tabindex="0"' +
-      ' onclick="openDialog(' + i + ')"' +
-      ' onkeyup="openWithEnter(event,' + i + ')">';
+  for (var i = 0; i < images.length; i++) {
+    row.innerHTML += `
+      <img 
+        src="${images[i]}" 
+        alt="${names[i]}" 
+        class="photo-platzhalter" 
+        tabindex="0" 
+        role="button"
+        onclick="openDialog(${i})"
+        onkeydown="handleThumbnailKey(event, ${i})">
+    `;
   }
 }
 
+function openDialog(index) {
+  lastFocusedElement = document.activeElement;
+  currentIndex = index;
+  updateDialog();
+  dialog.showModal();
+}
 
+function closeDialog() {
+  dialog.close();
+  if (lastFocusedElement) {
+    lastFocusedElement.focus(); 
+  }
+}
+
+// habe auch mit leertaste zusammengemacht 13 => Entertaste, 32 => Leertaste 
+function handleThumbnailKey(e, index) {
+  if (e.keyCode === 13 || e.keyCode === 32) { 
+    e.preventDefault();
+    openDialog(index);
+  }
+}
 
 function openDialog(index) {
   currentIndex = index;
   updateDialog();
-  document.getElementById("image-dialog").showModal();
+  dialog.showModal();
 }
 
 function updateDialog() {
@@ -63,18 +89,12 @@ function updateDialog() {
   document.getElementById("photo-count").innerText = (currentIndex + 1) + " / " + images.length;
 }
 
-function closeBackground(e) {
-  let dialog = document.getElementById("image-dialog");
-  let box = document.querySelector(".dialog-container");
-
-  if (!box.contains(e.target)) {
-    dialog.close();
-  }
+function closeDialog() {
+  dialog.close();
 }
 
 function changeImage(step) {
   currentIndex = currentIndex + step;
-
   if (currentIndex < 0) {
     currentIndex = images.length - 1;
   }
@@ -84,32 +104,19 @@ function changeImage(step) {
   updateDialog();
 }
 
-function handleKeys(e) {
-  let dialog = document.getElementById("image-dialog");
+dialog.addEventListener("click", function(e) {
+  var box = document.querySelector(".dialog-container");
+  if (!box.contains(e.target)) {
+    closeDialog();
+  }
+});
+
+document.body.onkeydown = function(e) {
   if (!dialog.open) return;
 
-  if (e.key === "ArrowLeft") {
-    changeImage(-1);
-  }
-  if (e.key === "ArrowRight") {
-    changeImage(1);
-  }
-  if (e.key === "Escape") {
-    dialog.close();
-  }
+  if (e.key === "ArrowLeft") changeImage(-1);
+  if (e.key === "ArrowRight") changeImage(1);
+  if (e.key === "Escape") closeDialog();
 }
-
-function openWithEnter(e, index) {
-  if (e.keyCode === 13) { 
-    openDialog(index);
-  }
-}
-
-
-function closeDialog() {
-  document.getElementById("image-dialog").close();
-}
-
-
 
 

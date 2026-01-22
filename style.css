@@ -1,4 +1,3 @@
-
 * {
     padding: 0;
     margin: 0;
@@ -15,7 +14,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
     font-family: "Figtree", "Palanquin", sans-serif;
-    background-color: #06171E; 
+    background-color: #06171E;
 }
 
 /* HEADER */
@@ -46,7 +45,7 @@ header {
 main {
     display: flex;
     justify-content: center;
-    flex: 1 0 auto; 
+    flex: 1 0 auto;
     background-color: #06171E;
     min-height: 860px;
 }
@@ -105,7 +104,7 @@ main {
 /* FOOTER */
 .footer_outer {
     width: 100%;
-    background-color: #06171E; 
+    background-color: #06171E;
     margin-top: 80px;
 }
 
@@ -113,22 +112,22 @@ main {
     width: 100%;
     /* max-width: 1440px; */
     height: 128px;
-    margin: 0 auto; 
+    margin: 0 auto;
     background-image: url("./assets/icons/Subtract.png");
-    background-size: 100% 100%; 
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center bottom;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    top: -1px; 
+    top: -1px;
 }
 
 .footer_logo {
     width: 210px;
     height: auto;
-    margin-top: 15px; 
+    margin-top: 15px;
 }
 
 
@@ -226,7 +225,7 @@ button#next-btn :hover {
 
 #close-btn:hover {
     background-color: rgba(253, 91, 79, 0.2);
-
+    cursor: pointer;
 }
 
 
@@ -320,6 +319,15 @@ button#next-btn :hover {
         justify-content: center;
     }
 
+    #close-btn,
+    button#prev-btn,
+    button#next-btn {
+        width: 50px;
+        height: 50px;
+        background-color: rgba(253, 91, 79, 0);
+        -webkit-tap-highlight-color: transparent;
+    }
+
     .footer_logo {
         width: 150px;
         height: auto;
@@ -331,5 +339,6 @@ button#next-btn :hover {
         object-fit: cover;
     }
 
+   
 
 }
